@@ -1,0 +1,75 @@
+/*
+CSS by @hnml
+Based on RefreshedSeamlessChatBar by @nspg911 
+https://canary.discord.com/channels/1015060230222131221/1028106818368589824/1354738654148427786
+https://nspc911.github.io/themes/vencord/RefreshedSeamlessChatBar.theme.css
+! is not valid css
+*/
+/* rev: 1 */
+
+$offset: calc(var(--space-xs) * 2 - 4px); // $if !@compact-user-panel
+$offset: 0px; // $if @compact-user-panel
+
+.visual-refresh .form_f75fb0 {
+	--custom-channel-textarea-text-area-height: calc(var(--custom-rtc-account-height, 44px) + #{$offset});
+	margin-top: -5px;
+	padding: var(--space-xs);
+	.channelTextArea_f75fb0 {
+		--custom-chat-input-margin-bottom: 0px;
+		.stackedBars__74017 {
+			border-bottom-color: transparent !important;
+			background-color: var(--chat-background-default);
+		}
+	}
+	.channelAttachmentArea_b77158 {
+		background-color: var(--chat-background-default);
+	}
+
+	/* the stars of the show, the :has */
+	/* check for typing thing */
+	&:has(> .typing_b88801 > .typingDots_b88801 > span > strong) .channelTextArea_f75fb0 {
+		border-top-left-radius: 0;
+	}
+	/* check for cooldown thing */
+	&:has(.cooldownWrapper_b21699) .channelTextArea_f75fb0 {
+		border-top-right-radius: 0;
+	}
+
+	.textAreaMobileThemed__74017 {
+		margin-top: 0;
+	}
+}
+/* slowmode bar + typing indicator */
+.visual-refresh .base_b88801 {
+	position: absolute;
+	right: var(--space-xs);
+	bottom: calc(100% - var(--space-xs) - 0.5lh);
+	left: var(--space-xs);
+	border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+	overflow: visible;
+	.typingDots_b88801,
+	.cooldownWrapper_b21699 {
+		border: 1px solid var(--border-faint);
+		border-bottom-color: transparent;
+		border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+		background: var(--bg-overlay-floating, var(--chat-background-default));
+		padding: 0 var(--space-xs);
+		padding-top: var(--space-xs);
+		height: calc(1lh - var(--space-xs) * 2);
+		overflow: visible;
+		.form_f75fb0:has(.channelTextArea_f75fb0:focus-within) & {
+			border: 1px solid var(--border-subtle);
+			border-bottom-color: transparent;
+		}
+	}
+	.typingDots_b88801:not(:has(> span > strong)) {
+		display: none;
+	}
+}
+
+/* "follow this server" bar */
+.visual-refresh .wrapper__44df5 {
+	margin: 0;
+	padding: 0;
+	height: var(--custom-channel-textarea-text-area-height);
+}

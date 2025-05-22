@@ -1,0 +1,11 @@
+/*
+Original css by @hnml
+! Requires ThemeAttributes !
+*/
+[data-is-self="true"] > .message__5126c.mentioned__5126c {
+	--background-mentioned-hover: var(--background-message-hover);
+	&,
+	&::before {
+		background: unset;
+	}
+}

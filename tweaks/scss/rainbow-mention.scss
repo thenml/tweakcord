@@ -1,0 +1,20 @@
+/* Original css by @hnml */
+.mention,
+.channelMention,
+.messageListItem__5126c .username-u-ebrn,
+.repliedMessage_c19a55 .desaturateUserColors-1O-G89 {
+	animation: chat-ping-rainbow 3s infinite linear;
+	color: var(--mention-foreground) !important;
+	font-weight: bold;
+}
+.messageListItem__5126c .content__235ca {
+	color: var(--text-normal);
+}
+@keyframes chat-ping-rainbow {
+	from {
+		filter: hue-rotate(0deg);
+	}
+	to {
+		filter: hue-rotate(360deg);
+	}
+}

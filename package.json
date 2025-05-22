@@ -1,0 +1,24 @@
+{
+  "name": "tweakcord",
+  "scripts": {
+    "build:scss": "sass view/style.scss view/dist/style.css",
+    "build:frontend": "node scripts/pre-build.js && esbuild view/index.ts --bundle --outfile=view/dist/bundle.js --minify",
+    "build": "pnpm build:scss && pnpm build:frontend",
+    "start": "node server.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.2",
+    "prettier": "^3.5.3",
+    "prettier-plugin-css-order": "^2.1.2",
+    "sass": "^1.86.3"
+  },
+  "prettier": {
+    "plugins": [
+      "prettier-plugin-css-order"
+    ],
+    "arrowParens": "avoid",
+    "printWidth": 120,
+    "tabWidth": 4,
+    "useTabs": true
+  }
+}

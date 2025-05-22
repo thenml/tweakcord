@@ -1,0 +1,36 @@
+name: Update Discord Classes
+
+on:
+    schedule:
+        - cron: "0 */12 * * *"
+    workflow_dispatch:
+
+jobs:
+    update-classes:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+              with:
+                  persist-credentials: false
+                  fetch-depth: 0
+
+            - name: Set up Go
+              uses: actions/setup-go@v5
+              with:
+                  go-version: "1.21"
+
+            - name: Run update-classes.go
+              run: go run scripts/update-classes.go
+
+            - name: Commit and push changes
+              run: |
+                  git config --global user.name 'github-actions[bot]'
+                  git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+                  git add tweaks/scss
+                  if ! git diff --cached --quiet; then
+                    git commit -m 'chore: update Discord classes' || echo "No changes to commit"
+                    git push
+                  else
+                    echo "No changes detected."
+                  fi

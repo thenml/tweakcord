@@ -1,0 +1,20 @@
+/* Original CSS by @hnml */
+body::after,
+body::before {
+	position: absolute;
+	right: 164px;
+	bottom: 80px;
+	opacity: 0.6;
+	z-index: 999;
+	pointer-events: none;
+	content: "Activate Discord";
+	color: #fff;
+	font-size: 20px;
+	font-family: "Noto Sans";
+}
+body::after {
+	right: 102px;
+	bottom: 60px;
+	content: "Go to settings to activate Discord.";
+	font-size: 14px;
+}

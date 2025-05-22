@@ -1,0 +1,295 @@
+@use "tailwind";
+@use "sass:math";
+@use "sass:color";
+@import url("https://fonts.googleapis.com/css?family=Rubik&display=swap");
+
+$color-blurple: #5865f2;
+
+$color-lightest: tailwind.$Gray-100;
+$color-light: tailwind.$Gray-300;
+$color-dark: tailwind.$Gray-600;
+$color-darker: tailwind.$Gray-800;
+$color-darkest: tailwind.$Gray-900;
+
+$color-body: tailwind.$Zinc-900;
+$color-background: tailwind.$Gray-800;
+
+$card-base: tailwind.$Zinc-900;
+$card-hover: tailwind.$Zinc-800;
+$card-enabled: tailwind.$Zinc-600;
+$card-enabled-hover: tailwind.$Zinc-500;
+$card-required: tailwind.$Stone-600;
+$card-incompatible: tailwind.$Red-600;
+
+html,
+body {
+	margin: 0;
+	height: 100%;
+}
+
+body {
+	background-color: $color-blurple;
+	width: calc(100vw - 10px);
+	height: calc(100vh - 10px);
+	overflow: hidden;
+	color: $color-lightest;
+	font-family: Rubik;
+	text-align: center;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	margin: 5px;
+	border-radius: 10px;
+	background-color: $color-body;
+	padding: 5px;
+	width: calc(100% - 10px);
+	height: calc(100% - 10px);
+}
+
+h3,
+h5 {
+	margin: 0;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+	padding: 0 20px;
+}
+
+#import-section {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+
+	#import-hash {
+		border: 1px solid $color-dark;
+		border-radius: 4px;
+		background-color: $card-base;
+		padding: 4px 8px;
+		width: 250px;
+		color: $color-lightest;
+		font-size: 0.9em;
+		font-family: Rubik;
+
+		&:focus {
+			outline: none;
+			border-color: $color-blurple;
+		}
+
+		&::placeholder {
+			color: $color-dark;
+			font-size: 0.9em;
+		}
+	}
+
+	#import-button {
+		transition: background-color 0.2s;
+		cursor: pointer;
+		border: none;
+		border-radius: 4px;
+		background-color: $color-blurple;
+		padding: 4px 8px;
+		color: $color-lightest;
+		font-size: 0.9em;
+		font-family: Rubik;
+
+		&:hover {
+			background-color: color.scale($color-blurple, $lightness: -10%);
+		}
+
+		&:active {
+			background-color: color.scale($color-blurple, $lightness: -15%);
+		}
+	}
+}
+
+.cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+	gap: 24px;
+	margin: 0 auto;
+	border-radius: 10px;
+	background-color: $color-background;
+	padding: 2%;
+	width: 96%;
+	height: fit-content;
+	overflow: scroll;
+	scrollbar-width: none;
+	::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+$card-width: 160px;
+$card-height: calc($card-width + 2lh);
+
+.card-wrapper {
+	cursor: pointer;
+	margin: 2% auto;
+	width: $card-width;
+	height: $card-height;
+}
+
+.card {
+	display: grid;
+	transform: perspective(3000px) rotateY(calc(var(--rotateX) * 1deg))
+		rotateX(calc(var(--rotateY) * 1deg));
+	transform-style: preserve-3d;
+	transition-duration: 100ms;
+	border: $color-blurple 3px solid;
+	border-radius: 10%;
+	background-color: $card-base;
+	height: calc(100% - 6px);
+	color: #fff;
+	&-wrapper:hover & {
+		transition-duration: 0ms;
+		background-color: $card-hover;
+	}
+	.enabled & {
+		background-color: $card-enabled;
+	}
+	&-wrapper.enabled:hover & {
+		background-color: $card-enabled-hover;
+	}
+
+	.required & {
+		position: relative;
+		cursor: not-allowed;
+		background-color: $card-required;
+	}
+	.recommended:not(.enabled) & {
+		animation: recommended-glow 2s ease-in-out infinite alternate;
+	}
+
+	&-preview {
+		border-bottom: $color-blurple 3px solid;
+		border-top-right-radius: inherit;
+		border-top-left-radius: inherit;
+		background-position: center;
+		background-size: contain;
+		background-repeat: no-repeat;
+
+		background-color: #1a1a1e;
+		height: math.div($card-width * 3, 4);
+	}
+}
+
+@keyframes recommended-glow {
+	from {
+		box-shadow: 0 0 10px 5px rgba($color-blurple, 0.5);
+	}
+	to {
+		box-shadow: 0 0 10px 5px $color-blurple;
+	}
+}
+
+#popup {
+	position: absolute;
+	transform: translate(-20px, -120%);
+	z-index: 1;
+	border-radius: 10px;
+	background-color: $color-dark;
+	padding: 10px;
+	width: 180px;
+	pointer-events: none;
+	text-align: center;
+}
+
+.incompatible {
+	background-color: $card-incompatible !important;
+}
+
+#clipboard {
+	position: absolute;
+	right: calc(2% + 5px);
+	bottom: calc(2% + 20px);
+	cursor: pointer;
+	margin: 8px;
+	border-radius: 10px;
+	background: $color-darkest no-repeat center;
+	background-size: 60%;
+	width: 40px;
+	height: 40px;
+	&:hover {
+		filter: brightness(150%);
+	}
+	&.copied-popup::after {
+		position: relative;
+		left: calc(-50% - 4px);
+		opacity: 0;
+		animation: copied-popup 1s ease-out 1;
+		border-radius: 10px;
+		background-color: tailwind.$Emerald-600;
+		padding: 4px;
+		pointer-events: none;
+		content: attr(copied-text);
+		font-weight: 700;
+		font-size: 24px;
+	}
+	svg {
+		display: block;
+		margin: auto;
+		width: 24px;
+		height: 100%;
+	}
+}
+
+.context-menu {
+	display: flex;
+	position: absolute;
+	flex-direction: row;
+	z-index: 10;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+	border-radius: 6px;
+	background-color: $color-dark;
+	padding: 4px;
+	user-select: none;
+
+	.menu-item {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		margin: 0 2px;
+		border-radius: 4px;
+		padding: 8px;
+
+		&:hover {
+			background-color: $color-darker;
+		}
+
+		svg {
+			width: 18px;
+			height: 18px;
+		}
+	}
+}
+
+// why
+[hidden] {
+	display: none;
+}
+
+@keyframes copied-popup {
+	0% {
+		transform: translateY(0);
+		opacity: 0;
+	}
+	20% {
+		transform: translateY(-20px);
+		opacity: 1;
+	}
+	80% {
+		transform: translateY(-20px);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(-40px);
+		opacity: 0;
+	}
+}

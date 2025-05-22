@@ -1,0 +1,49 @@
+/* Original css by @hnml */
+.visual-refresh .search__49676 {
+	margin: 0;
+}
+.iconContainer_fea832 {
+	left: -4px;
+	transition: 0.2s;
+}
+.search__97492:not(.open__97492) .searchBar__97492 {
+	/* style like iconWrapper__9293f when unoppened */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	margin: 0;
+	border: none;
+	background: transparent;
+	width: var(--space-32);
+	height: var(--space-32);
+	.iconLayout_fea832 {
+		cursor: pointer;
+	}
+
+	/* the text input acts like a button */
+	.DraftEditor-root {
+		cursor: pointer;
+		padding: 0;
+		.public-DraftEditorPlaceholder-root {
+			padding: 0;
+			width: var(--space-32);
+			height: var(--space-32);
+		}
+		.public-DraftEditorPlaceholder-inner {
+			height: var(--space-32);
+			color: transparent;
+		}
+	}
+
+	.iconContainer_fea832 {
+		width: var(--chat-input-icon-size);
+		height: var(--chat-input-icon-size);
+	}
+	.icon_fea832 {
+		color: var(--icon-tertiary);
+	}
+	&:hover .icon_fea832 {
+		color: var(--icon-secondary);
+	}
+}

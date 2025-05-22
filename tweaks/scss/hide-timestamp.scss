@@ -1,0 +1,12 @@
+/* Original css by @hnml */
+.message__5126c {
+	.timestampInline_c19a55,
+	.latin24CompactTimeStamp_c19a55 {
+		opacity: 0;
+		transition: 0.2s opacity ease-in-out;
+	}
+	&:hover .timestampInline_c19a55,
+	&:hover .latin24CompactTimeStamp_c19a55 {
+		opacity: 1;
+	}
+}

@@ -1,0 +1,61 @@
+/* Original css by @hnml */
+/* rev: 1 */
+
+/* floating channel bar */
+.subtitleContainer_f75fb0 {
+	--custom-channel-header-height: 40px;
+	position: absolute;
+	top: var(--space-xs);
+	right: calc(5% + var(--tweakcord-universal-member-list-width));
+	left: 5%;
+	z-index: 100;
+	> .title_f75fb0 {
+		margin: auto;
+		border: 1px solid var(--border-subtle);
+		border-radius: var(--radius-md);
+		padding: 8px var(--space-xs);
+		width: min-content;
+		max-width: 100%;
+	}
+}
+
+/* universal member list width */
+/*  TODO: maybe move this to a @theme-helper tweak? */
+.chat_f75fb0 {
+	--tweakcord-universal-member-list-width: 0px;
+	/* search results */
+	&:has(> .content_f75fb0 > .searchResultsWrap_a9e706) {
+		--tweakcord-universal-member-list-width: 418px;
+	}
+	/* member list in chat & fullscreen thread */
+	&:has(> .content_f75fb0 > :is(.container_c8ffbb, .container__7641b)) {
+		--tweakcord-universal-member-list-width: var(--custom-member-list-width);
+	}
+	/* user profile in dm */
+	&:has(> .content_f75fb0 > .outer_c0bea0) {
+		--tweakcord-universal-member-list-width: 340px;
+	}
+}
+
+/* hide channel description in the title */
+.topic__6ec1a {
+	position: absolute;
+	padding-left: 100%; /* hide text by pushing to overflow */
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+/* limit max width of search bar */
+.visual-refresh .searchBar__97492 {
+	width: 100px;
+	max-width: 244px;
+}
+
+/* lower new messages */
+.newMessagesBar__0f481,
+.newTopicsBarContainer__0f481 {
+	position: absolute;
+	top: calc(var(--custom-channel-header-height) + var(--space-xs));
+	border-radius: var(--radius-md);
+}

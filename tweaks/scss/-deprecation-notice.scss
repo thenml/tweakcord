@@ -1,0 +1,22 @@
+.tutorialContainer__1f388 .wrapper_cc5dd2 {
+	&::after {
+		position: fixed;
+		top: calc(10px + var(--space-xs));
+		left: calc(10px + var(--space-xs));
+		z-index: 9999;
+		pointer-events: none;
+		content: "⚠️";
+		font-size: 24px;
+	}
+	&:hover::after {
+		top: calc(50px + var(--space-xs));
+		left: calc(10px + var(--space-xs));
+		border-radius: 4px;
+		background-color: #333;
+		padding: 6px 10px;
+		content: "Tweakcord: the tweak TWEAK-NAME has been deprecated.";
+		color: #fff;
+		font-size: 12px;
+		white-space: nowrap;
+	}
+}

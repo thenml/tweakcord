@@ -1,0 +1,32 @@
+/* Original css by @hnml */
+.scroller_ef3116 {
+	overflow: hidden !important;
+	/* selector * has no impact if used in this way (~3ms) */
+	> .stack_dbd263:has(> *) {
+		mask-image: linear-gradient(
+			to bottom,
+			transparent,
+			black var(--space-xs),
+			black calc(100% - var(--space-xs)),
+			transparent
+		);
+		margin: calc(var(--space-xs) * -1) 0;
+		padding: var(--space-xs) 0 !important;
+		overflow: hidden scroll;
+		&#guild-list-unread-dms {
+			min-height: fit-content;
+		}
+		&:not(#guild-list-unread-dms) {
+			margin-bottom: 0;
+			padding-bottom: 0 !important;
+		}
+		&::-webkit-scrollbar {
+			width: 0;
+			height: 0;
+		}
+	}
+}
+/* this is fixed to the scroller via js, so it breaks when we move the scroller to the children */
+.unreadMentionsIndicatorBottom_ef3116 {
+	display: none;
+}
