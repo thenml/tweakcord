@@ -1,8 +1,8 @@
+# ⚠️ This project is in beta testing. If you would like to help, message me on Discord @hnml.
+
 # TweakCord
 
 A customization site that allows users to modify the Discord interface through CSS tweaks.
-
-This project is in beta testing. If you would like to help, message me on Discord @hnml.
 
 ## Features
 
@@ -21,7 +21,7 @@ However, I have attributed the used code to the original authors. If you would l
 
 ## Privacy
 
-This project does not collect any data. You are free to download the tweaks and use them locally, however they will not be updated with new classes.
+This project does not collect any data. You are free to download the tweaks and use them locally, however they will not be updated with new classes. All of the compiled tweaks are publicly available on the gh-pages branch of this repo.
 
 ## TODO list
 
@@ -31,18 +31,8 @@ This project does not collect any data. You are free to download the tweaks and 
 - add some themes as a proof of concept
 - remake the readme
 
-## Notice
-
-This project is independant and was in developement before the release of https://github.com/abbie/discord-css [(message)](https://discord.com/channels/1015060230222131221/1028106818368589824/1373627680980861089).
-
-Some ideas may have been taken accidentally, that is the nature of a human brain.
-
-There are many differences between the two projects. Compiling the CSS using only the configured tweaks and using direct classes is way more perfomant than using [class] selectors. Additionally splitting the CSS into multiple files is easier to maintain and distribute than a single massive file.
-
-No hate to the author, the concept of creating multiple tweaks is bound to be explored by someone other than me.
-
 ## License
 
 - The frontend is licensed under the MIT license.
-- The tweaks are CC0 unless otherwise specified. Attribution is strongy encouraged but not required.
+- The tweaks are CC0 unless otherwise specified. Attribution is strongly encouraged but not required.
 - The backend is ARR until the project is complete.

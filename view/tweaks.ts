@@ -133,6 +133,8 @@ export function buildDependencyMaps(tweaks: Tweak[]): void {
 	});
 }
 
+const TWEAK_HOST_LOCATION = "https://thenml.github.io/tweakcord";
+
 export async function saveClipboard(element: HTMLElement): Promise<void> {
 	try {
 		const response = await fetch("/css", {
@@ -146,10 +148,11 @@ export async function saveClipboard(element: HTMLElement): Promise<void> {
 		}
 
 		const { hash } = await response.json();
-		const importStatement = `@import url(https://${window.location.host}/css/${hash}.css);`;
+		const importStatement = `@import url(${TWEAK_HOST_LOCATION}/css/${hash}.css);`;
 		await navigator.clipboard.writeText(importStatement);
 
 		element.classList.add("copied-popup");
+		// TODO: add a notice that the css will be available in a few seconds when the github page will be built
 	} catch (error) {
 		console.error("Failed to save to clipboard:", error);
 		element.classList.add("error");
