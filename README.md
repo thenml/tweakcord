@@ -1,3 +1,3 @@
-due to https://github.com/Vendicated/Vencord/pull/3162 i have to mirror all of the generated files here.
+public mirror of generated css for https://tweakcord.nmll.xyz/
 
-i don't agree with this change, i guess it's to limit ip-loggers?
+https://github.com/Vendicated/Vencord/pull/3162
